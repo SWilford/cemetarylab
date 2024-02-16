@@ -152,7 +152,23 @@ while imput != "0":
             print(person)
     
     elif imput == "4": #Show interesting data
-        print()
+        avgAge = 0.0
+        oldestAge = 0.0
+        allYears = []
+        allStreets = []
+        for person in people:
+            avgAge = avgAge + person.age
+            if oldestAge < person.age:
+                oldestAge = person.age
+            allYears.append(person.year)
+            allStreets.append(person.address)
+        avgAge = avgAge / len(people)
+        highestYear = max(set(allYears), key=allYears.count)
+        highestStreet = max(set(allStreets), key=allStreets.count)
+        print("Average age at death: "+str(avgAge))
+        print("Oldest age at death: "+str(oldestAge))
+        print("Year with most amount of deaths: "+str(highestYear)+" with "+str(allYears.count(highestYear))+" deaths")
+        print("Street with most deaths: "+str(highestStreet+" with "+str(allStreets.count(highestStreet))+" deaths"))
         
     elif imput != "0": #Checking for invalid inputs
         print("Invalid Input")
